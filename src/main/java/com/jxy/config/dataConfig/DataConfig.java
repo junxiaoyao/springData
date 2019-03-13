@@ -1,29 +1,25 @@
 package com.jxy.config.dataConfig;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+
 import java.sql.SQLException;
 import java.util.Properties;
-
 @Configuration
 @PropertySource("classpath:jdbc.properties")
 @EnableTransactionManagement//开启事务及对注解@Transactional的支持
+@EnableJpaRepositories(basePackages = "com.jxy.repository")//扫描Repository包
 public class DataConfig {
     //数据库url
     @Value("${spring.datasource.url}")
@@ -127,7 +123,6 @@ public class DataConfig {
         managerFactoryBean.setPackagesToScan("com.jxy.entity");
         return managerFactoryBean;
     }
-
     //指定实现厂商专用特性，此处指定mysql
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
@@ -139,11 +134,8 @@ public class DataConfig {
         return jpaVendorAdapter;
     }
     // Spring Data JPA事务配置
-    @Bean
-    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-        JpaTransactionManager jpaTm = new JpaTransactionManager();
-        jpaTm.setEntityManagerFactory(entityManagerFactory);
-        return jpaTm;
-    }
-
+   @Bean
+   public JpaTransactionManager transactionManager() {
+       return new JpaTransactionManager(); // does this need an emf???
+   }
 }

@@ -1,3 +1,4 @@
+/*
 package com.jxy.repository;
 
 import org.springframework.stereotype.Repository;
@@ -12,3 +13,4 @@ import javax.persistence.PersistenceUnit;
 public class RoleRepository extends MySuperRepository<Role, Long> {
 
 }
+*/

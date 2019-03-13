@@ -14,10 +14,11 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <thymeleafVersion>2.1.3.RELEASE</thymeleafVersion>
         <springVersion>4.3.6.RELEASE</springVersion>
-        <hibernateVsersion>5.2.2.Final</hibernateVsersion>
-        <spring-orm>1.2.6</spring-orm>
+        <hibernateVsersion>4.0.1.Final</hibernateVsersion>
+        <spring-orm>4.3.6.RELEASE</spring-orm>
         <springSecurityVersion>4.2.1.RELEASE</springSecurityVersion>
         <jacksonVsersion>2.9.8</jacksonVsersion>
+        <springJpaData>1.3.2.RELEASE</springJpaData>
     </properties>
     <build>
         <plugins>
@@ -32,7 +33,8 @@
                             <maxIdleTime>30000</maxIdleTime>
                         </connector>
                     </connectors>
-                    <webAppSourceDirectory>${project.build.directory}/${pom.artifactId}-${pom.version}</webAppSourceDirectory>
+                    <webAppSourceDirectory>${project.build.directory}/${pom.artifactId}-${pom.version}
+                    </webAppSourceDirectory>
                     <contextPath>/</contextPath>
                 </configuration>
             </plugin>
@@ -44,9 +46,13 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>1.11.5.RELEASE</version>
+            <version>${springJpaData}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>1.5.1.RELEASE</version>
+        </dependency>
         <!--测试-->
         <dependency>
             <groupId>junit</groupId>
@@ -72,19 +78,18 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernateVsersion}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernateVsersion}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-hibernate -->
         <!-- <dependency>
            <groupId>org.springframework</groupId>
            <artifactId>spring-hibernate</artifactId>
            <version>${spring-hibernate}</version>
          </dependency>-->
-        <!-- https://mvnrepository.com/artifact/springframework/spring-orm -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${springVersion}</version>
-        </dependency>
+
 
         <!--J2EE-->
         <dependency>
@@ -132,6 +137,19 @@
             <artifactId>spring-core</artifactId>
             <version>${springVersion}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/springframework/spring-orm -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${springVersion}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/springframework/spring-orm -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${springVersion}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
@@ -222,18 +240,6 @@
             <artifactId>commons-fileupload</artifactId>
             <version>1.3.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.4.6</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
-        <!--<dependency>
-          <groupId>net.sf.json-lib</groupId>
-          <artifactId>json-lib</artifactId>
-          <version>2.4</version>
-        </dependency>-->
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>

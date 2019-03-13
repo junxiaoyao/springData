@@ -1,14 +1,17 @@
+/*
 package com.jxy.service;
 
-import com.jxy.repository.MySuperRepository;
+//import com.jxy.repository.MySuperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+*/
 /**
  * @Auther: jxy
  * @Date: 2019/3/8 15:52
  * @Description:
- */
+ *//*
+
 @Service
 public class BaseServiceImp<E> implements IBaseService<E> {
     @Autowired
@@ -34,3 +37,4 @@ public class BaseServiceImp<E> implements IBaseService<E> {
         mySuperRepository.update(e);
     }
 }
+*/

@@ -1,7 +1,9 @@
 package com.jxy.controller;
 
 import com.jxy.entity.Role;
-import com.jxy.service.RoleServiceRe;
+//import com.jxy.repository.MyRoleRe;
+//import com.jxy.service.RoleServiceRe;
+import com.jxy.repository.MyRoleRe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +23,10 @@ import java.util.Map;
 @Controller
 @RequestMapping("/")
 public class HomeController {
+  //  @Autowired
+    //private RoleServiceRe roleServiceRe;
     @Autowired
-    private RoleServiceRe roleServiceRe;
+    MyRoleRe myRoleRe;
 
     @RequestMapping(method = RequestMethod.GET)
     public String home(HttpServletRequest request, Model model) {
@@ -34,6 +38,13 @@ public class HomeController {
 
     @RequestMapping("login")
     public String loginGet(HttpServletRequest request) {
+        Role role=new Role();
+        role.setRoleName("home");
+        role.setUserId(1);
+        role.setCreateTime(new Date());
+        role.setRemark("xoiadsa");
+        role.setUserName("sdsd");
+        myRoleRe.save(role);
         return "login";
     }
 

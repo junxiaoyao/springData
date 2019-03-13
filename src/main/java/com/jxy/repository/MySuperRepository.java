@@ -1,3 +1,4 @@
+/*
 package com.jxy.repository;
 
 import org.springframework.stereotype.Repository;
@@ -9,11 +10,13 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+*/
 /**
  * @Auther: jxy
  * @Date: 2019/3/8 10:28
  * @Description:
- */
+ *//*
+
 
 
 @Transactional
@@ -63,3 +66,4 @@ public class MySuperRepository<T, P extends Serializable> {
         return null;
     }
 }
+*/
